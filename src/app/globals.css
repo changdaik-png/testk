@@ -1,0 +1,231 @@
+/* src/app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@100..900&display=swap');
+
+:root {
+  --primary: #818cf8;
+  --primary-glow: rgba(129, 140, 248, 0.5);
+  --secondary: #6366f1;
+  --accent: #f472b6;
+  --white: #ffffff;
+  --bg-light: #f8fafc;
+  --bg-dark: #0f172a;
+  --text-dark: #1e293b;
+  --text-light: #f1f5f9;
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+
+  --font-main: 'Pretendard', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --bg-light: #0f172a;
+    --text-dark: #f1f5f9;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-main);
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 20px;
+}
+
+/* Gradient background animation */
+.bg-gradient-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .bg-gradient-mesh {
+    background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #0f172a 100%);
+  }
+}
+
+/* Base UI Components */
+.btn-primary {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 var(--primary-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 var(--primary-glow);
+}
+
+.input-glass {
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-glass:focus {
+  border-color: var(--primary);
+}
+
+/* Chat Page Specific Styles */
+.chat-container {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.chat-header {
+  margin: 12px 12px 0;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.chat-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  padding: 12px;
+  gap: 12px;
+}
+
+.chat-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.chat-input-area {
+  padding: 10px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.message-wrapper {
+  display: flex;
+  margin-bottom: 18px;
+}
+
+.message-wrapper.user {
+  justify-content: flex-end;
+}
+
+.message-wrapper.model {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 78%;
+  padding: 14px 18px;
+  line-height: 1.65;
+  font-size: 0.97rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.message-bubble.user {
+  border-radius: 20px 20px 4px 20px;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: #fff;
+}
+
+.message-bubble.model {
+  border-radius: 20px 20px 20px 4px;
+  background: rgba(255,255,255,0.08);
+  color: inherit;
+}
+
+.indicator-card {
+  padding: 20px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  text-align: center;
+}
+
+.action-blockquote {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(129,140,248,0.15), rgba(244,114,182,0.1));
+  border-left: 3px solid var(--primary);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
