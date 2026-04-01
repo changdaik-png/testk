@@ -24,7 +24,7 @@ interface Message {
 // ────────────────────────────────────────────
 // 컴포넌트 유틸리티
 // ────────────────────────────────────────────
-function cn(...inputs: any[]) {
+function cn(...inputs: (string | boolean | undefined | null | { [key: string]: boolean })[]) {
   return twMerge(clsx(inputs));
 }
 
@@ -192,7 +192,7 @@ export default function ChatPage() {
                   exit={{ opacity: 0, y: -8 }}
                   className="action-blockquote"
                 >
-                  "{latestAction}"
+                  &quot;{latestAction}&quot;
                 </motion.blockquote>
               ) : (
                 <p className="opacity-40 text-sm leading-relaxed">
@@ -333,7 +333,7 @@ export default function ChatPage() {
                     <Lightbulb size={14} /> 따뜻한 한마디
                   </h3>
                   <p className="italic text-[var(--primary)] leading-relaxed font-medium">
-                    "{messages.findLast(m => m.role === 'model')?.reflection || "당신의 마음을 소중히 간직할게요."}"
+                    &quot;{messages.findLast(m => m.role === 'model')?.reflection || "당신의 마음을 소중히 간직할게요."}&quot;
                   </p>
                 </div>
 

@@ -1,7 +1,7 @@
 // src/services/generation/agent.orchestrator.ts
 
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import { retriever, ChatMessage } from "./agent.retriever";
+import { GoogleGenerativeAI, Content } from "@google/generative-ai";
+import { retriever } from "./agent.retriever";
 import { guardrail } from "./agent.guardrail";
 import { parser, CounselingResponse } from "./agent.parser";
 
@@ -57,7 +57,7 @@ export class PromptOrchestrator {
     const history = await retriever.getOptimizedContext(sessionId);
     
     // 3. Assemble prompt and Generate
-    const contents: any[] = [
+    const contents: Content[] = [
       { role: "user", parts: [{ text: this.SYSTEM_PROMPT }] },
       ...history.map(msg => ({
         role: msg.role === "user" ? "user" : "model",
