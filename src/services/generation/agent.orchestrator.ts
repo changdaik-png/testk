@@ -7,9 +7,9 @@ import { parser, CounselingResponse } from "./agent.parser";
 
 // API 키가 없으면 동작하지 않으므로 주의 (기본값 설정은 샘플)
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY || "");
-// Gemini 1.5/2 모델 사용
+// Gemini 2.5 Flash 모델 사용
 const model = genAI.getGenerativeModel({ 
-  model: "gemini-2.0-flash",
+  model: "gemini-2.5-flash",
   generationConfig: {
     responseMimeType: "application/json"
   }
